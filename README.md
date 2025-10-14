@@ -1,354 +1,154 @@
 # PokemonApp 🎮
 
-Una aplicación móvil React Native que consume datos de la PokéAPI para mostrar información completa de Pokémon con funcionalidades modernas de búsqueda, favoritos y navegación fluida.
+Aplicación móvil React Native que consume la PokéAPI para explorar información completa de Pokémon con funcionalidades modernas de búsqueda, favoritos y navegación fluida.
 
 ## 📱 Descripción General
 
-PokemonApp es una aplicación móvil desarrollada con React Native 0.74+ y TypeScript que demuestra el uso de patrones modernos de desarrollo móvil. La aplicación permite a los usuarios:
+PokemonApp es una aplicación móvil desarrollada con **React Native 0.74+ y TypeScript** que demuestra el uso de patrones modernos de desarrollo móvil. 
 
-- **Explorar Pokémon**: Lista paginada con scroll infinito de todos los Pokémon disponibles
-- **Buscar en tiempo real**: Búsqueda con debounce por nombre de Pokémon
-- **Ver detalles completos**: Información detallada incluyendo estadísticas, tipos, habilidades e imágenes
-- **Gestionar favoritos**: Sistema de favoritos persistente con AsyncStorage
-- **Navegación fluida**: Transiciones suaves entre pantallas con React Navigation
+### Funcionalidades Principales
 
-### ✨ Características Principales
-
-- 🔍 **Búsqueda inteligente** con debounce (300ms)
-- ♥️ **Sistema de favoritos** persistente
-- 📊 **Estadísticas visuales** con barras de progreso
-- 🎨 **Tipos coloridos** con badges dinámicos
-- 📱 **Diseño responsive** optimizado para móviles
-- ⚡ **Scroll infinito** para navegación eficiente
-- 🔄 **Pull-to-refresh** para actualizar datos
-- 🌐 **Manejo offline** con caché inteligente
-- 🎯 **Estados de UI** completos (loading, error, empty)
+- **Lista de Pokémon**: Scroll infinito con paginación automática
+- **Búsqueda inteligente**: Búsqueda en tiempo real con debounce (300ms)
+- **Pantalla de detalle**: Información completa con estadísticas, tipos y habilidades
+- **Sistema de favoritos**: Persistencia local con AsyncStorage
+- **Estados de UI**: Manejo completo de loading, error y estados vacíos
+- **Navegación fluida**: Transiciones nativas entre pantallas
 
 ## 🚀 Instalación y Ejecución
 
 ### Prerrequisitos
-
 - Node.js >= 18.0.0
-- React Native development environment configurado
 - Android Studio (para Android) o Xcode (para iOS)
-- Git
+- React Native development environment configurado
 
 ### Pasos de Instalación
 
-1. **Clonar el repositorio**
-   ```bash
-   git clone <repository-url>
-   cd PokemonApp
-   ```
+```bash
+# 1. Clonar el repositorio
+git clone https://github.com/AlbertoRaphael/PokemonApp.git
+cd PokemonApp
 
-2. **Instalar dependencias**
-   ```bash
-   npm install
-   ```
+# 2. Instalar dependencias
+npm install
 
-3. **Configuración para iOS** (solo macOS)
-   ```bash
-   cd ios && pod install && cd ..
-   ```
+# 3. Para iOS (solo macOS)
+cd ios && pod install && cd ..
 
-4. **Ejecutar en Android**
-   ```bash
-   npm run android
-   # o
-   npx react-native run-android
-   ```
-
-5. **Ejecutar en iOS** (solo macOS)
-   ```bash
-   npm run ios
-   # o
-   npx react-native run-ios
-   ```
+# 4. Ejecutar la aplicación
+npm start                # Iniciar Metro bundler
+npm run android         # Ejecutar en Android
+npm run ios             # Ejecutar en iOS (solo macOS)
+```
 
 ### Scripts Disponibles
 
 ```bash
-npm start          # Iniciar Metro bundler
-npm run android    # Ejecutar en Android
-npm run ios        # Ejecutar en iOS
-npm run lint       # Ejecutar ESLint
-npm test           # Ejecutar tests
-npm run clean      # Limpiar caché de Metro
+npm start               # Iniciar Metro bundler
+npm run android         # Ejecutar en Android
+npm run ios             # Ejecutar en iOS
+npm run info            # Ver información del proyecto
+npm run lint            # Verificar código con ESLint
+npm test                # Ejecutar tests
 ```
 
 ## 📦 Dependencias Principales
 
-### Core Framework
-- **React Native 0.74.5** - Framework principal para desarrollo móvil
-- **TypeScript 5.0.4** - Tipado estático para JavaScript
+### Framework y Lenguaje
+- **React Native 0.74.5** - Framework de desarrollo móvil
+- **TypeScript** - Tipado estático para JavaScript
 
-### Navegación
-- **@react-navigation/native 7.x** - Navegación entre pantallas
-- **@react-navigation/native-stack** - Stack navigator nativo
-- **react-native-screens** - Optimización de pantallas nativas
+### Gestión de Estado y Datos
+- **Zustand** - Store global ligero y eficiente
+- **@tanstack/react-query** - Manejo de estado del servidor y caché
+- **@react-native-async-storage/async-storage** - Persistencia local
+
+### Navegación y UI
+- **@react-navigation/native** - Navegación entre pantallas
+- **react-native-fast-image** - Optimización de carga de imágenes
 - **react-native-safe-area-context** - Manejo de áreas seguras
 
-### Gestión de Estado
-- **Zustand 5.x** - Store global ligero y eficiente
-- **@tanstack/react-query 5.x** - Manejo de estado del servidor y caché
+### Red y API
+- **Axios** - Cliente HTTP para llamadas a la PokéAPI
 
-### Almacenamiento y Red
-- **@react-native-async-storage/async-storage** - Persistencia local
-- **Axios 1.x** - Cliente HTTP para llamadas a API
+## ⏱️ Tiempo Total Invertido
 
-### UI y Multimedia
-- **react-native-fast-image** - Optimización de carga de imágenes
+**Tiempo estimado de desarrollo: 12-16 horas**
 
-### Desarrollo
-- **ESLint** - Linting de código
-- **Prettier** - Formateo de código
-- **Jest** - Framework de testing
+- **Configuración inicial y estructura**: 2 horas
+- **Implementación de API y tipos**: 2 horas
+- **Componentes UI y pantallas**: 4 horas
+- **Sistema de favoritos y estado**: 2 horas
+- **Navegación e integración**: 2 horas
+- **Testing y optimización**: 2 horas
+- **Documentación**: 2-4 horas
 
-## 🏗️ Arquitectura del Proyecto
+## 🛠️ Decisiones Técnicas Clave
+
+### ¿Por qué React Query?
+- **Caché automático**: Manejo inteligente de caché con invalidación
+- **Estados integrados**: Loading, error y success incluidos
+- **Scroll infinito**: `useInfiniteQuery` perfecto para paginación
+- **Optimización**: Deduplicación de requests y background updates
+
+### ¿Por qué Zustand?
+- **Simplicidad**: API minimalista sin boilerplate
+- **Performance**: Re-renders optimizados
+- **TypeScript**: Soporte nativo excelente
+- **Tamaño**: Muy ligero (~2KB) comparado con Redux
+
+### ¿Por qué TypeScript?
+- **Seguridad**: Prevención de errores en tiempo de compilación
+- **Productividad**: IntelliSense y refactoring seguro
+- **Mantenibilidad**: Código autodocumentado y escalable
+
+### Arquitectura Elegida
+- **Separación por capas**: API, Estado, UI y Navegación
+- **Hooks personalizados**: Lógica reutilizable y testeable
+- **Componentes modulares**: Reutilización y mantenimiento
+- **Transformadores de datos**: Separación entre API y dominio
+
+## 🏗️ Estructura del Proyecto
 
 ```
 src/
-├── api/              # Cliente API y configuración
-│   ├── apiClient.ts     # Cliente Axios centralizado
-│   ├── pokemon.ts       # Endpoints específicos de Pokémon
-│   ├── queryClient.ts   # Configuración React Query
-│   └── types.ts         # Tipos de respuesta API
+├── api/              # Cliente API y endpoints
 ├── components/       # Componentes reutilizables
-│   ├── common/          # Componentes generales
-│   └── pokemon/         # Componentes específicos de Pokémon
 ├── hooks/           # Hooks personalizados
-│   ├── usePokemons.ts   # Hook para lista paginada
-│   ├── usePokemonDetail.ts # Hook para detalles
-│   ├── usePokemonSearch.ts # Hook para búsqueda
-│   └── useDebounce.ts   # Hook de utilidad
 ├── navigation/      # Configuración de navegación
-│   ├── AppNavigator.tsx # Navegador principal
-│   └── navigationUtils.ts # Utilidades de navegación
 ├── screens/         # Pantallas de la aplicación
-│   ├── PokemonList/     # Pantalla de lista
-│   └── PokemonDetail/   # Pantalla de detalle
-├── store/           # Stores de Zustand
-│   └── favoritesStore.ts # Store de favoritos
+├── store/           # Estado global (Zustand)
 └── types/           # Definiciones TypeScript
-    ├── pokemon.types.ts  # Tipos de dominio
-    ├── common.types.ts   # Tipos comunes
-    └── transformers.ts   # Transformadores de datos
 ```
 
-## 🛠️ Decisiones Técnicas
+## 🎯 Características Técnicas
 
-### ¿Por qué React Query?
+- **Scroll infinito** con React Query `useInfiniteQuery`
+- **Búsqueda con debounce** para optimizar requests
+- **Caché inteligente** con React Query
+- **Persistencia local** con AsyncStorage
+- **Navegación tipada** con React Navigation
+- **Optimización de imágenes** con FastImage
+- **Manejo de errores** centralizado
+- **Estados de UI** completos
 
-**React Query** fue elegido sobre Redux o Context API por las siguientes razones:
+## 📱 Cómo Ver la Aplicación
 
-- **Caché inteligente**: Manejo automático de caché con invalidación y refetch
-- **Estados integrados**: Loading, error y success states incluidos
-- **Optimización de red**: Deduplicación de requests y background updates
-- **Scroll infinito**: `useInfiniteQuery` perfecto para paginación
-- **Menor boilerplate**: Menos código comparado con Redux + RTK Query
-- **Performance**: Optimizaciones automáticas y selective re-renders
+**Importante**: React Native es para móviles, no funciona en navegador web.
 
-### ¿Por qué Zustand?
+1. **Abrir Android Studio** → AVD Manager
+2. **Iniciar emulador** Android
+3. **Ejecutar**: `npm start` y luego `npm run android`
+4. **Ver la app** funcionando en el emulador
 
-**Zustand** fue seleccionado para estado global por:
+## 🔗 Enlaces
 
-- **Simplicidad**: API minimalista sin providers ni boilerplate
-- **Performance**: Re-renders optimizados y selective subscriptions
-- **TypeScript**: Excelente soporte nativo para TypeScript
-- **Tamaño**: Librería muy ligera (~2KB)
-- **Flexibilidad**: Fácil integración con AsyncStorage para persistencia
-
-### ¿Por qué TypeScript?
-
-- **Seguridad de tipos**: Prevención de errores en tiempo de compilación
-- **IntelliSense**: Mejor experiencia de desarrollo con autocompletado
-- **Refactoring**: Refactoring seguro y confiable
-- **Documentación**: Los tipos sirven como documentación viva
-- **Escalabilidad**: Mejor mantenimiento en proyectos grandes
-
-### ¿Por qué React Navigation?
-
-- **Nativo**: Usa componentes nativos para mejor performance
-- **Gestos**: Soporte completo para gestos nativos de iOS y Android
-- **Configurabilidad**: Altamente personalizable y extensible
-- **TypeScript**: Excelente soporte para navegación tipada
-- **Comunidad**: Amplio soporte y documentación
-
-## 🎯 Funcionalidades Implementadas
-
-### ✅ Lista de Pokémon
-- Scroll infinito con paginación automática
-- Pull-to-refresh para actualizar datos
-- Tarjetas con imagen, nombre y tipos
-- Indicadores de favoritos en tiempo real
-- Estados de carga y error
-
-### ✅ Búsqueda Inteligente
-- Debounce de 300ms para optimizar requests
-- Búsqueda en tiempo real por nombre
-- Estados de carga durante búsqueda
-- Manejo de casos sin resultados
-- Botón de limpiar búsqueda
-
-### ✅ Pantalla de Detalle
-- Imagen de alta calidad (official artwork)
-- Información completa: stats, tipos, habilidades
-- Barras de progreso para estadísticas
-- Botón de favorito flotante
-- Manejo de estados de carga y error
-
-### ✅ Sistema de Favoritos
-- Persistencia con AsyncStorage
-- Sincronización en tiempo real
-- Indicadores visuales en lista y detalle
-- Manejo de errores con rollback
-- Store global con Zustand
-
-### ✅ Navegación
-- Stack navigator con transiciones nativas
-- Navegación tipada con TypeScript
-- Headers personalizados por pantalla
-- Gestión de parámetros de ruta
-
-## 🔧 Configuración Avanzada
-
-### Variables de Entorno
-
-Crear archivo `.env` en la raíz del proyecto:
-
-```env
-API_BASE_URL=https://pokeapi.co/api/v2
-API_TIMEOUT=10000
-CACHE_TIME=300000
-```
-
-### Configuración de Metro
-
-El proyecto incluye configuración personalizada de Metro para:
-- Resolución de alias de rutas (`@/` → `src/`)
-- Optimización de bundle size
-- Soporte para assets optimizados
-
-### Configuración de TypeScript
-
-- Strict mode habilitado
-- Path mapping configurado
-- Tipos estrictos para mejor seguridad
-
-## 🧪 Testing
-
-### Ejecutar Tests
-
-```bash
-npm test                    # Ejecutar todos los tests
-npm run test:watch         # Modo watch
-npm run test:coverage      # Con coverage report
-```
-
-### Estructura de Tests
-
-```
-__tests__/
-├── components/           # Tests de componentes
-├── hooks/               # Tests de hooks
-├── utils/               # Tests de utilidades
-└── integration/         # Tests de integración
-```
-
-## 📊 Performance
-
-### Optimizaciones Implementadas
-
-- **FlatList optimizado**: `removeClippedSubviews`, `getItemLayout`
-- **Imágenes optimizadas**: `react-native-fast-image` con caché
-- **Debounce en búsqueda**: Reduce llamadas a API
-- **Memoización**: `React.memo`, `useCallback`, `useMemo`
-- **Lazy loading**: Componentes cargados bajo demanda
-
-### Métricas de Performance
-
-- **Tiempo de carga inicial**: ~2-3 segundos
-- **Scroll performance**: 60 FPS consistente
-- **Tamaño de bundle**: ~15MB (optimizado)
-- **Uso de memoria**: ~50-80MB promedio
-
-## 🐛 Troubleshooting
-
-### Problemas Comunes
-
-1. **Metro bundler no inicia**
-   ```bash
-   npx react-native start --reset-cache
-   ```
-
-2. **Errores de dependencias**
-   ```bash
-   rm -rf node_modules && npm install
-   ```
-
-3. **Problemas con iOS**
-   ```bash
-   cd ios && pod install && cd ..
-   ```
-
-4. **Errores de Android**
-   ```bash
-   cd android && ./gradlew clean && cd ..
-   ```
-
-### Logs de Debug
-
-```bash
-# Android
-npx react-native log-android
-
-# iOS
-npx react-native log-ios
-```
-
-## 🤝 Contribución
-
-### Guías de Desarrollo
-
-1. **Seguir convenciones de TypeScript**
-2. **Usar ESLint y Prettier**
-3. **Escribir tests para nuevas funcionalidades**
-4. **Documentar cambios en README**
-5. **Seguir patrones de arquitectura establecidos**
-
-### Estructura de Commits
-
-```
-feat: nueva funcionalidad
-fix: corrección de bug
-docs: cambios en documentación
-style: cambios de formato
-refactor: refactoring de código
-test: agregar o modificar tests
-```
-
-## 📄 Licencia
-
-Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
-
-## 🔗 Enlaces Útiles
-
-- [PokéAPI Documentation](https://pokeapi.co/docs/v2)
-- [React Native Documentation](https://reactnative.dev/docs/getting-started)
-- [React Query Documentation](https://tanstack.com/query/latest)
-- [Zustand Documentation](https://zustand-demo.pmnd.rs/)
-- [React Navigation Documentation](https://reactnavigation.org/docs/getting-started)
-
-## 👥 Equipo
-
-Desarrollado como prueba técnica para demostrar conocimientos en:
-- React Native moderno con TypeScript
-- Arquitectura escalable y mantenible
-- Patrones de desarrollo móvil
-- Integración con APIs REST
-- Gestión de estado y persistencia
-- UI/UX optimizada para móviles
+- **Repositorio**: https://github.com/AlbertoRaphael/PokemonApp
+- **PokéAPI**: https://pokeapi.co/
+- **React Native**: https://reactnative.dev/
 
 ---
 
-**¿Preguntas o sugerencias?** No dudes en abrir un issue o contactar al equipo de desarrollo.
+**Desarrollado por**: Alberto Raphael  
+**Prueba Técnica**: React Native + TypeScript + PokéAPI  
+**Fecha**: 2024
